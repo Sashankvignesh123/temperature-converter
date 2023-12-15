@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Temperature Converter</title>
+    <script>
+        function convert(unit) {
+    const celsiusInput = document.getElementById('celsius');
+    const fahrenheitInput = document.getElementById('fahrenheit');
+    const resultOutput = document.getElementById('result');
+
+    if (unit === 'C') {
+        const celsiusValue = parseFloat(celsiusInput.value);
+        const fahrenheitValue = (celsiusValue * 9/5) + 32;
+        fahrenheitInput.value = isNaN(fahrenheitValue) ? '' : fahrenheitValue;
+        resultOutput.textContent = isNaN(fahrenheitValue) ? '' : `${celsiusValue}°C is ${fahrenheitValue}°F`;
+    } else if (unit === 'F') {
+        const fahrenheitValue = parseFloat(fahrenheitInput.value);
+        const celsiusValue = (fahrenheitValue - 32) * 5/9;
+        celsiusInput.value = isNaN(celsiusValue) ? '' : celsiusValue;
+        resultOutput.textContent = isNaN(celsiusValue) ? '' : `${fahrenheitValue}°F is ${celsiusValue}°C`;
+    }
+}
+
+    </script>
+    <style>
+        body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #2c3e50;
+    color: #ecf0f1;
+}
+
+.container {
+    width: 80%;
+    margin: 50px auto;
+    background-color: #3498db;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+}
+
+h1 {
+    color: #ecf0f1;
+}
+
+.converter {
+    margin-top: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    color: #ecf0f1;
+}
+
+input {
+    padding: 15px;
+    margin-bottom: 20px;
+    width: calc(50% - 10px);
+    box-sizing: border-box;
+}
+
+input:focus {
+    outline: none;
+    border: 2px solid #e74c3c;
+}
+
+#result {
+    font-weight: bold;
+    font-size: 18px;
+    color: #e74c3c;
+    margin-top: 20px;
+}
+
+ 
+    </style>
+    
+</head>
+<body>
+
+    <div class="container">
+        <h1>Temperature Converter</h1>
+
+        <div class="converter">
+            <label for="celsius">Celsius:</label>
+            <input type="number" id="celsius" placeholder="Enter Celsius" oninput="convert('C')">
+            
+            <label for="fahrenheit">Fahrenheit:</label>
+            <input type="number" id="fahrenheit" placeholder="Enter Fahrenheit" oninput="convert('F')">
+        </div>
+
+        <p id="result">Result will be displayed here</p>
+    </div>
+
+
+</body>
+</html>
